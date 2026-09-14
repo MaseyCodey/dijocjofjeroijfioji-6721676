@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff7eb6">
+  <meta name="description" content="Mase Day — sunny art for happy spaces. Digital downloads and art prints by Mase.">
+  <title>Mase Day — Sunny Art Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="announcement">☀️ instant digital downloads · physical prints coming soon ☀️</div>
+  <header class="site-header">
+    <a href="#" class="brand" aria-label="Mase Day home"><span class="mini-sun">☀</span><span>Mase Day</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#shop">shop</a><a href="#about">about</a>
+      <button class="link-button" data-open="accountModal">account</button>
+      <button class="cart-button" data-open="cartDrawer">bag <span id="cartCount">0</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="sparkle s1">✦</div><div class="sparkle s2">✿</div>
+      <div class="hero-copy">
+        <p class="eyebrow">art made by Mase</p>
+        <h1>A little <em>sunshine</em><br>for your walls.</h1>
+        <p>Playful pink prints, warm colors, and cheerful art made to brighten ordinary days.</p>
+        <a class="primary-button" href="#shop">shop the collection <span>→</span></a>
+      </div>
+      <div class="sun-stage" aria-hidden="true">
+        <div class="sun-rays"></div>
+        <div class="sun-face"><i></i><i></i><b></b></div>
+        <div class="float-card card-one">made with<br><strong>good vibes</strong> ♡</div>
+        <div class="float-card card-two">digital<br>download ✦</div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label="Store features"><span>ORIGINAL ART ✿ INSTANT DOWNLOADS ✿ HAPPY COLORS ✿ MADE BY MASE ✿</span></section>
+
+    <section id="shop" class="shop-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">the happy collection</p><h2>Pick your sunshine</h2></div>
+        <div class="filters" role="group" aria-label="Filter products">
+          <button class="filter active" data-filter="all">all</button>
+          <button class="filter" data-filter="digital">digital</button>
+          <button class="filter" data-filter="physical">physical</button>
+        </div>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+      <div id="emptyState" class="empty hidden">No art here yet—Mase is making something sunny!</div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="about-art"><div class="flower">✿</div><div class="arch">M</div></div>
+      <div>
+        <p class="eyebrow">hello, sunshine</p><h2>Made to make your day.</h2>
+        <p>Hi, I’m Mase! I make colorful art for bedrooms, desks, dorms, gifts, and every space that could use a happier little corner.</p>
+        <p>Digital pieces arrive right away. Physical prints will be packed with care when they become available.</p>
+        <a href="mailto:hello@masey.space" class="text-link">say hello →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="mini-sun">☀</span>Mase Day</a><p>made with sunshine by Mase ☺</p><p>© <span id="year"></span> Mase Day</p></footer>
+
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-head"><div><p class="eyebrow">your bag</p><h2>Sunny picks</h2></div><button class="icon-button" data-close aria-label="Close">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="cartFooter" class="cart-footer">
+      <div class="total"><span>total</span><strong id="cartTotal">$0.00</strong></div>
+      <button id="checkoutButton" class="primary-button full">continue to checkout →</button>
+      <small>Secure checkout is connected when you add your payment link.</small>
+    </div>
+  </aside>
+
+  <div id="accountModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="icon-button modal-close" data-close aria-label="Close">×</button>
+      <div id="signedOutView">
+        <div class="modal-sun">☀</div><p class="eyebrow">welcome back</p><h2>Your Mase Day account</h2>
+        <p>Sign in to see orders and keep your happy finds together.</p>
+        <div id="googleButton"></div>
+        <button id="demoLogin" class="google-fallback"><span>G</span> Continue with Google</button>
+        <small class="setup-note">Demo mode is available until Google Sign-In is configured.</small>
+      </div>
+      <div id="signedInView" class="hidden">
+        <div class="profile-row"><div class="avatar" id="avatar">M</div><div><h2 id="accountName">Mase Day Friend</h2><p id="accountEmail"></p></div></div>
+        <h3>Past orders</h3><div id="ordersList" class="orders-list"></div>
+        <button id="signOut" class="secondary-button">sign out</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <form id="checkoutForm" class="modal-card checkout-card">
+      <button type="button" class="icon-button modal-close" data-close aria-label="Close">×</button>
+      <p class="eyebrow">almost yours</p><h2>Checkout details</h2>
+      <label>Email <input id="checkoutEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+      <fieldset id="shippingFields">
+        <legend>Shipping address</legend>
+        <label>Full name <input id="shipName" autocomplete="name" placeholder="Mase Day"></label>
+        <label>Street address <input id="address1" autocomplete="shipping street-address" placeholder="Start typing your address"></label>
+        <div id="addressSuggestions" class="address-suggestions hidden"></div>
+        <label>Apartment, suite, etc. <input id="address2" autocomplete="shipping address-line2"></label>
+        <div class="input-row">
+          <label>City <input id="city" autocomplete="shipping address-level2"></label>
+          <label>State <input id="state" autocomplete="shipping address-level1"></label>
+          <label>ZIP <input id="zip" autocomplete="shipping postal-code"></label>
+        </div>
+      </fieldset>
+      <div class="total checkout-total"><span>Order total</span><strong id="checkoutTotal">$0.00</strong></div>
+      <button class="primary-button full" type="submit">pay securely →</button>
+      <small id="checkoutNotice">Add your Stripe payment link in config.js before accepting real orders.</small>
+    </form>
+  </div>
+
+  <div id="adminModal" class="modal" aria-hidden="true">
+    <div class="modal-card admin-card">
+      <button class="icon-button modal-close" data-close aria-label="Close">×</button>
+      <p class="eyebrow">Mase only</p><h2>Shop admin</h2>
+      <div id="adminLock">
+        <p>Enter your local admin PIN. Change it in <code>config.js</code> before publishing.</p>
+        <label>Admin PIN <input id="adminPin" type="password" inputmode="numeric"></label>
+        <button id="unlockAdmin" class="primary-button full">open admin</button>
+      </div>
+      <div id="adminPanel" class="hidden">
+        <form id="productForm">
+          <input id="editingId" type="hidden">
+          <div class="input-row"><label>Product name <input id="productName" required></label><label>Price <input id="productPrice" type="number" min="0" step=".01" required></label></div>
+          <label>Description <textarea id="productDescription" rows="2" required></textarea></label>
+          <div class="input-row"><label>Type <select id="productType"><option value="digital">Digital</option><option value="physical">Physical</option></select></label><label>Artwork color <input id="productColor" type="color" value="#f9a7c4"></label></div>
+          <label>Image URL (optional) <input id="productImage" type="url" placeholder="https://..."></label>
+          <button class="primary-button full" type="submit">save listing</button>
+        </form>
+        <div id="adminProducts" class="admin-products"></div>
+        <button id="resetProducts" class="danger-link">restore sample products</button>
+      </div>
+    </div>
+  </div>
+  <div id="scrim" class="scrim"></div>
+  <button id="adminShortcut" class="admin-shortcut" aria-label="Open admin">✦</button>
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="config.js"></script><script src="app.js"></script>
+</body>
+</html>
